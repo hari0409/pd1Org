@@ -20,27 +20,18 @@
  * See the Apex Language Reference for more information about Testing and Code Coverage.
  */
 @isTest
-private class AccountTriggerTest {
+private class TestRestrictContactByName {
 
     @isTest
-        // TO DO: @IsTest
-    static void testAccountTriggerWith200Records() {
-        // Start test execution
+    static void myUnitTest() {
+        // TO DO: implement unit test
         Test.startTest();
-
-        // Create 200 Account records with BillingState set to 'CA'
-        List<Account> accounts = new List<Account>();
-        for (Integer i = 0; i < 200; i++) {
-            Account a = new Account(Name = 'Test Account '+i, BillingState = 'CA');
-            accounts.add(a);
-        }
-        insert accounts;
-
-        // Stop test execution
+        Contact c=new Contact(LastName='INVALIDNAME');
+        try {
+            Database.insert(c);
+        } catch (Exception e) {
+            System.Assert.isTrue(e.getMessage().contains('The Last Name "'+c.LastName+'" is not allowed for DML'));
+        } 
         Test.stopTest();
-
-        // Verify that all Account records with BillingState 'CA' have been created
-        List<Account> caAccounts = [SELECT Id FROM Account WHERE ShippingState = 'CA'];
-        System.assertEquals(200, caAccounts.size(), 'All Account records with BillingState \'CA\' should have been created');
     }
 }

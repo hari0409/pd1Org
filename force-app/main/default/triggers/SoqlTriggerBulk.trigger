@@ -1,3 +1,7 @@
-trigger SoqlTriggerBulk on Opportunity(after update) {
-    List<Opportunity> oppos=[SELECT Id, AccountId, Name, StageName FROM Opportunity where Id IN :Trigger.New];
+trigger SoqlTriggerBulk on Account(after update) {
+    System.debug(Trigger.new);
+    List<Account> accWithOppo=[SELECT Id, Name, (SELECT Id, Name FROM Opportunities) from Account where Id IN :Trigger.new];
+    for (Account acc : accWithOppo) {
+        System.debug(acc.Opportunities);
+    }
 }

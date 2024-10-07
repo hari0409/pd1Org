@@ -11,4 +11,3 @@ public class SMSUtils {
         return 'SMS Sent';
     }
 }
-
