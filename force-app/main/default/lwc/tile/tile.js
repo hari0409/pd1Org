@@ -11,4 +11,5 @@ export default class Tile extends LightningElement {
         // Fire the event from c-tile
         this.dispatchEvent(event);
     }
+
 }

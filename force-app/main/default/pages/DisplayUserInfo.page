@@ -1,0 +1,6 @@
+<apex:page>
+    <p>
+        Name: {! $User.Firstname } - {! $User.LastName }
+    </p>
+    Date: {! TODAY() }
+</apex:page>
