@@ -1,0 +1,7 @@
+<apex:page controller="ContactsListWithController">
+    <apex:form>
+        <apex:pageBlock title="Contact list" id="contact_list">
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
